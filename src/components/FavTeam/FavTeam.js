@@ -22,7 +22,8 @@ class FavTeam extends Component {
       show: false,
       showRank: false,
       arrOfMatch:[],
-      teamId:"39"
+      teamId:"541",
+      rank:[]
     }
   }
 
@@ -33,18 +34,41 @@ class FavTeam extends Component {
     this.setState({ showRank: !this.state.showRank })
   }
  
+
+  getTeamId = async () => {
+    await axios.get(`${process.env.REACT_APP_SERVER_URL}getteams`).then((res) => {
+      console.log(res);
+      this.setState({
+        teamId: res.data[0],
+      },
+      );
+      console.log(this.state.teamId);
+
+    });
+  };
+  getRank = async () => {
+    await axios.get(`${process.env.REACT_APP_SERVER_URL}favstanding?=`).then((res) => {
+      console.log(res);
+      this.setState({
+        rank: res.data,
+      },
+      );
+      console.log(this.state.rank);
+
+    });
+  };
+
+
   
   getMatchesFav = async () => {
+  
     await axios.get(`${process.env.REACT_APP_SERVER_URL}favmatches?teamId=${this.state.teamId}`).then((res) => {
       console.log(res);
       this.setState({
         arrOfMatch: res.data,
       },this.handleModal()
       );
-
-
       console.log(this.state.arrOfMatch);
-
     });
   };
   render() {
@@ -74,12 +98,12 @@ class FavTeam extends Component {
           <CardActions>
             <Grid container justify="center">
               <Button
-                onClick={this.getMatchesFav}
+              onClick={this.getMatchesFav}
             
                 variant="outlined"
                 color="secondary"
               >
-                Recent match
+               Upcoming match 
               </Button>
               <Button
               onClick={this.handleRanking }
@@ -144,31 +168,21 @@ class FavTeam extends Component {
 
             </Modal.Header>
             <Modal.Body>
-           
-              <Table className="table" responsive="sm">
-          <div className='desForm'>Football / Soccer Club World Ranking</div>
-        
-            <tr>
-              <th>#</th>
-              <th>Table heading</th>
-              <th>Table heading</th>
-              <th>Table heading</th>
-            </tr>
-         
-    
-            <tr>
-              <td>1</td>
-              <td>Table cell</td>
-              <td>Table cell</td>
-              <td>Table cell</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Table cell</td>
-              <td>Table cell</td>
-              <td>Table cell</td>
-            </tr>
-        </Table>
+                            <tr>
+                                <th>#</th>
+                                <th>rank</th>
+                                <th>team</th>
+                                <th>points</th>
+                            </tr>
+                                {/* { 
+                                     <tr>
+                                     <td>{match.home}</td>
+                                     <td>{match.elapsed}</td>
+                                     <td>{match.away}</td>
+                                     <td>{match.homeGoals} - {match.awayGoals}</td>
+                                 </tr>
+                                } */}
+                         
     
 
             </Modal.Body>
