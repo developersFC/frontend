@@ -1,3 +1,4 @@
+import { useAuth0 } from '@auth0/auth0-react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -9,11 +10,14 @@ const Navbar = () => {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
-  const showButton = () =>
+  const showButton = () => {
     window.innerWidth <= 960 ? setButton(false) : setButton(true);
+  };
 
   useEffect(() => {
     showButton();
@@ -26,7 +30,7 @@ const Navbar = () => {
       <nav className="navbar">
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-            Link <i className="fab fa-typo3"></i>
+            Golden Goal <i className="fab fa-typo3"></i>
           </Link>
           <div className="menu-icon" onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'}></i>
@@ -37,40 +41,77 @@ const Navbar = () => {
                 Home
               </Link>
             </li>
-            <li className="nav-item">
-              <Link
-                to="/favteam"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                FavTeam
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/livescore"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Live Score
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/h2h" className="nav-links" onClick={closeMobileMenu}>
-                Head to Head
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/signup"
-                className="nav-links-mobile"
-                onClick={closeMobileMenu}
-              >
-                Sign Up
-              </Link>
-            </li>
+            {isAuthenticated && (
+              <>
+                <li className="nav-item">
+                  <Link
+                    to="/favteam"
+                    className="nav-links"
+                    onClick={closeMobileMenu}
+                  >
+                    FavTeam
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    to="/livescore"
+                    className="nav-links"
+                    onClick={closeMobileMenu}
+                  >
+                    Live Score
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    to="/h2h"
+                    className="nav-links"
+                    onClick={closeMobileMenu}
+                  >
+                    Head to Head
+                  </Link>
+                </li>
+              </>
+            )}
+            {!isAuthenticated && (
+              <li className="nav-item">
+                {!button && (
+                  <Button
+                    className="btn-mobile"
+                    buttonStyle="btn--primary"
+                    onClick={() => loginWithRedirect()}
+                  >
+                    LOGIN
+                  </Button>
+                )}
+              </li>
+            )}
+            {isAuthenticated && (
+              <li className="nav-item">
+                {!button && (
+                  <Button
+                    className="btn-mobile"
+                    buttonStyle="btn--primary"
+                    onClick={() => logout()}
+                  >
+                    LOGOUT
+                  </Button>
+                )}
+              </li>
+            )}
           </ul>
-          {button && <Button buttonStyle="btn--outline">SIGN UP</Button>}
+          {!isAuthenticated && button && (
+            <Button
+              buttonStyle="btn--outline"
+              onClick={() => loginWithRedirect()}
+            >
+              LOGIN
+            </Button>
+          )}
+          {isAuthenticated && button && (
+            <Button buttonStyle="btn--outline" onClick={() => logout()}>
+              LOGOUT
+            </Button>
+          )}
         </div>
       </nav>
     </>
