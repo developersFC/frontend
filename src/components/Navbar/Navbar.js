@@ -45,7 +45,7 @@ const Navbar = () => {
               <>
                 <li className="nav-item">
                   <Link
-                    to="/favteam"
+                    to="/favteams"
                     className="nav-links"
                     onClick={closeMobileMenu}
                   >
