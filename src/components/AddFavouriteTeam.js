@@ -15,7 +15,7 @@ const AddFavouriteTeam = () => {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}favteam?name=${teamName}`)
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);

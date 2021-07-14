@@ -1,0 +1,67 @@
+.table {
+  margin: 0px auto 0px -70%;
+  /* background-color: black; */
+  width: 650px;
+}
+.desForm {
+  margin: 0px auto 0px 0%;
+}
+
+.botClose {
+  background: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100%
+  );
+  color: #fff;
+
+  margin: 10px auto 10px -10%;
+  width: 130px;
+  height: 50px;
+  font-size: 20px;
+}
+
+.botClose:hover {
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 143, 255) 0%,
+    rgb(12, 99, 250) 100%
+  );
+  transition: all 0.4s ease-out;
+}
+
+.style {
+  color: #fff;
+  margin: -300px auto 0px 41%;
+  /* position: relative; */
+  /* background-color: black; */
+  width: 330px;
+  text-align: center;
+  padding: 25px;
+  font-size: 20px;
+}
+
+.botClose1:hover {
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 143, 255) 0%,
+    rgb(12, 99, 250) 100%
+  );
+  transition: all 0.4s ease-out;
+}
+
+.botClose1 {
+  background: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100%
+  );
+  color: #fff;
+
+  margin: 10px auto 10px 0%;
+  width: 130px;
+  height: 50px;
+  font-size: 20px;
+}

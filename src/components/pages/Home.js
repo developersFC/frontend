@@ -6,7 +6,7 @@ import '../../App.css';
 const Home = () => {
   return (
     <>
-      <HeroSection />
+      <HeroSection/>
       <Footer />
     </>
   );

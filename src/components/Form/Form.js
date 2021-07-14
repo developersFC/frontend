@@ -24,7 +24,7 @@ const Form = ({ findOrAdd }) => {
           <div className="form-content-left">
             <h1>Find you favourite teams</h1>
           </div>
-          <AddFavouriteTeam/>
+          <AddFavouriteTeam />
         </>
       )}
     </div>
