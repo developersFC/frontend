@@ -3,7 +3,9 @@ import { Card, ListGroupItem, ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { MDBIcon, MDBContainer } from 'mdbreact';
 import Footer from '../Footer/Footer';
+
 import './AboutUs.css'
+
 // import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBBtn } from 'mdb-react-ui-kit';
 
 
