@@ -65,3 +65,10 @@
   height: 50px;
   font-size: 20px;
 }
+.style{
+  color: black;
+  font-weight: bolder;
+  border:5px solid black;
+ 
+  text-align: center;
+}
