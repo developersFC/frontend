@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# Golden Goal
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Members
 
-## Available Scripts
+1- Thaer Braizat
 
-In the project directory, you can run:
+2- Nedal Alashqar
 
-### `npm start`
+3- Qasem Mohammad
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+4- Saif Momani
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+5- Mohammad Lababneh
 
-### `npm test`
+## Description
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+goldengoal.com is a website that allows you to pick your favourite team and keep track of their results and achievements, such as their results from previous days, or keep track of their live score if you're unable to watch the game live, check the starting squad for the match and many other features available through the API-FOOTBALL API.
 
-### `npm run build`
+## wireframe
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Home](image/HomePage.png)
+![favTeam](image/FavTeam.png)
+![liveScore](image/LiveScore.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## User Stories
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+1. As a user ,I want the ability to see the  club world ranking 
+ Feature Tasks: 
+ the user can see the club world ranking in front page 
+ Acceptance Tests:
+ ensure the  club world ranking uptodate 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2. As a user ,I want the ability to pick favourite teams
+ Feature Tasks: 
+ the user can fill a form to pick favourite team
+ Acceptance Tests:
+ ensure that the user login to be able to pick a favourite team
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+3. As a user, ,I want the ability to see the league ranking  to favourite teams
+Feature Tasks: 
+the user should see card with information about favourite teams
+Acceptance Tests:
+ ensure that the user login to be able to see the favourite teams page
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+4. As a user, ,I want the ability to see the recent match for favourite teams
 
-## Learn More
+Feature Tasks: 
+the user should see card with information about recent matches for favourite teams
+Acceptance Tests:
+ensure that the user login and has picked a favourite team to be able to see the recent matches
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. As a user, ,I want the ability to watch the live score for matches for favourite teams
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Feature Tasks:
+the user should so the live scroe for favourite teams match
+Acceptance Tests:
+ensure that there is a match on going to favourite teams to watch
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Domain Modeling
 
-### Advanced Configuration
+![domainModel](image/UntitledWorkspace.jpg)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## dataBase Model
+![database](image/UntitledWorkspace1.jpg)
