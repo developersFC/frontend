@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import '../../App.css';
 import axios from 'axios';
-import { Table } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import './LiveScore.css'
+
 
 export class LiveScore extends Component {
     constructor() {
@@ -27,33 +28,34 @@ export class LiveScore extends Component {
         console.log(this.state.liveMatchArr);
         return (
 
-            <>
+            <div className="body">
+                <div className='body2'>
+                    <Button className="btnLive" onClick={this.liveScore}>Refresh</Button>
+                    {this.state.liveMatchArr != [] && (
+                        <tr className="tableLive">
+                            <th className="liveScoreTh">Team 1</th>
+                            <th className="liveScoreTh">Time</th>
+                            <th className="liveScoreTh">Team 2</th>
+                            <th className="liveScoreTh">Result</th>
+                        </tr>
+                    )}
+                    {this.state.liveMatchArr.map(match => {
 
-                <button onClick={this.liveScore}>Click</button>
+                        return <>
 
-                {this.state.liveMatchArr.map(match => {
-
-                    return <>
-                        {/* <Table striped bordered hover responsive="sm"> */}
-                            <tr>
-                                <th>Team 1</th>
-                                <th>Time</th>
-                                <th>Team 2</th>
-                                <th>Reaslt</th>
+                            <tr className="tableLive">
+                                <td className="liveScoreTd">{match.home}</td>
+                                <td className="liveScoreTd">{match.elapsed}</td>
+                                <td className="liveScoreTd">{match.away}</td>
+                                <td className="liveScoreTd">{match.homeGoals} - {match.awayGoals}</td>
                             </tr>
-                            <tr>
-                                <td>{match.home}</td>
-                                <td>{match.elapsed}</td>
-                                <td>{match.away}</td>
-                                <td>{match.homeGoals} - {match.awayGoals}</td>
-                            </tr>
-                        {/* </Table>  */}
 
-                     </> 
-                })
-                }
 
-            </>
+                        </>
+                    })
+                    }
+                </div>
+            </div>
 
         )
     }

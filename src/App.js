@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/pages/Home';
 import FavTeam from './components/FavTeam/FavTeam';
-
+import Footer from './components/Footer/Footer';
 import './App.css';
 import LiveScore from './components/LiveScore/LiveScore';
 
@@ -31,6 +31,7 @@ const App = () => {
             component={() => <LiveScore />}
           />
         </Switch>
+        <Footer />
       </Router>
     </>
   );

@@ -47,11 +47,11 @@ class FavTeam extends Component {
     });
   };
   getRank = async () => {
-    await axios.get(`${process.env.REACT_APP_SERVER_URL}favstanding?=`).then((res) => {
+    await axios.get(`${process.env.REACT_APP_SERVER_URL}favstanding`).then((res) => {
       console.log(res);
       this.setState({
         rank: res.data,
-      },
+      },this.handleRanking()
       );
       console.log(this.state.rank);
 
@@ -73,7 +73,7 @@ class FavTeam extends Component {
   };
   render() {
     return (
-      <>
+      <div className="bodyFav">
     
         <Card
           style={{
@@ -106,7 +106,7 @@ class FavTeam extends Component {
                Upcoming match 
               </Button>
               <Button
-              onClick={this.handleRanking }
+              onClick={this.getRank}
            
                 style={{ marginLeft: 5 }}
                 variant="outlined"
@@ -114,13 +114,7 @@ class FavTeam extends Component {
               >
                 Ranking
               </Button>
-              <Button
-                style={{ marginLeft: 5 }}
-                variant="outlined"
-                color="primary"
-              >
-                Delete
-              </Button>
+             
             </Grid>
           </CardActions>
 
@@ -167,23 +161,28 @@ class FavTeam extends Component {
               </Modal.Title>
 
             </Modal.Header>
-            <Modal.Body>
-                            <tr>
-                                <th>#</th>
-                                <th>rank</th>
-                                <th>team</th>
-                                <th>points</th>
+            <Modal.Body className="tableFav">
+           
+            <tr className="favC">
+                                <th className="ETc">#</th>
+                                <th className="ETc">rank</th>
+                                <th className="ETc">team</th>
+                                <th className="ETc">points</th>
                             </tr>
-                                {/* { 
-                                     <tr>
-                                     <td>{match.home}</td>
-                                     <td>{match.elapsed}</td>
-                                     <td>{match.away}</td>
-                                     <td>{match.homeGoals} - {match.awayGoals}</td>
-                                 </tr>
-                                } */}
-                         
-    
+            { this.state.rank.map((item,i) =>{
+                return <>
+
+                             <tr className="favC">
+                                 <td className="ETc1">{i+1}</td>
+                                <td className="ETc1">{item.rank}</td>
+                                <td className="ETc1">{item.name}</td>
+                                <td className="ETc1">{item.points}</td>
+                                
+                            </tr>
+                           </>
+                               
+            })
+          }
 
             </Modal.Body>
             {/* <Modal.Footer>
@@ -206,7 +205,7 @@ class FavTeam extends Component {
    
     
   
-     </>
+     </div>
     )
   }
 }
