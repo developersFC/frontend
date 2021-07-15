@@ -1,7 +1,10 @@
-import React, { Component } from 'react'
-import "../../App.css";
-import "./FavTeam.css";
+import React, { Component } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import '../../App.css';
+import './FavTeam.css';
 import axios from 'axios';
+
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {
   Button,
@@ -10,71 +13,75 @@ import {
   CardContent,
   Grid,
   Typography,
-} from "@material-ui/core";
-import { Modal } from 'react-bootstrap'
+} from '@material-ui/core';
+// import { Modal } from 'react-bootstrap';
 // import BootstrapTable from 'react-bootstrap-table-next';
-import { Table } from "react-bootstrap";
+import { Table } from 'react-bootstrap';
 
 class FavTeam extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       show: false,
       showRank: false,
-      arrOfMatch:[],
-      teamId:"541",
-      rank:[]
-    }
+      arrOfMatch: [],
+      teamId: '541',
+      rank: [],
+    };
   }
 
   handleModal = () => {
-    this.setState({ show: !this.state.show })
-  }
+    this.setState({ show: !this.state.show });
+  };
   handleRanking = () => {
-    this.setState({ showRank: !this.state.showRank })
-  }
- 
+    this.setState({ showRank: !this.state.showRank });
+  };
 
   getTeamId = async () => {
-    await axios.get(`${process.env.REACT_APP_SERVER_URL}getteams`).then((res) => {
-      console.log(res);
-      this.setState({
-        teamId: res.data[0],
-      },
-      );
-      console.log(this.state.teamId);
-
-    });
+    await axios
+      .get(`${process.env.REACT_APP_SERVER_URL}getteams`)
+      .then((res) => {
+        console.log(res);
+        this.setState({
+          teamId: res.data[0],
+        });
+        console.log(this.state.teamId);
+      });
   };
   getRank = async () => {
-    await axios.get(`${process.env.REACT_APP_SERVER_URL}favstanding?=`).then((res) => {
-      console.log(res);
-      this.setState({
-        rank: res.data,
-      },
-      );
-      console.log(this.state.rank);
-
-    });
+    await axios
+      .get(`${process.env.REACT_APP_SERVER_URL}favstanding`)
+      .then((res) => {
+        console.log(res);
+        this.setState(
+          {
+            rank: res.data,
+          },
+          this.handleRanking()
+        );
+        console.log(this.state.rank);
+      });
   };
 
-
-  
   getMatchesFav = async () => {
-  
-    await axios.get(`${process.env.REACT_APP_SERVER_URL}favmatches?teamId=${this.state.teamId}`).then((res) => {
-      console.log(res);
-      this.setState({
-        arrOfMatch: res.data,
-      },this.handleModal()
-      );
-      console.log(this.state.arrOfMatch);
-    });
+    await axios
+      .get(
+        `${process.env.REACT_APP_SERVER_URL}favmatches?teamId=${this.state.teamId}`
+      )
+      .then((res) => {
+        console.log(res);
+        this.setState(
+          {
+            arrOfMatch: res.data,
+          },
+          this.handleModal()
+        );
+        console.log(this.state.arrOfMatch);
+      });
   };
   render() {
     return (
-      <>
-    
+      <div className="bodyFav">
         <Card
           style={{
             marginTop: 15,
@@ -98,133 +105,145 @@ class FavTeam extends Component {
           <CardActions>
             <Grid container justify="center">
               <Button
-              onClick={this.getMatchesFav}
-            
+                onClick={this.getMatchesFav}
                 variant="outlined"
                 color="secondary"
               >
-               Upcoming match 
+                Upcoming match
               </Button>
               <Button
-              onClick={this.handleRanking }
-           
+                onClick={this.getRank}
                 style={{ marginLeft: 5 }}
                 variant="outlined"
                 color="primary"
               >
                 Ranking
               </Button>
-              <Button
-                style={{ marginLeft: 5 }}
-                variant="outlined"
-                color="primary"
-              >
-                Delete
-              </Button>
             </Grid>
           </CardActions>
 
-          <Modal className="style" show={this.state.show} >
-            <Modal.Header  onClick={() => { this.handleModal() }}>
-              <Modal.Title>
-                Recent Match
-              </Modal.Title>
+          <Container className="testcontainer">
+            {this.state.arrOfMatch && (
+              <Row>
+                <Col>
+                  {/* <Modal className="style" show={this.state.show}>
+                  <Modal.Header
+                    onClick={() => {
+                      this.handleModal();
+                    }}
+                  > */}
+                  {/* <Modal.Title>Upcoming Match</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body> */}
+                  {/* <br></br> */}
 
-            </Modal.Header>
-            <Modal.Body>
-              <br></br>
-              { this.state.arrOfMatch.map(match =>{
-
-              return <>
-  
-              <h1 style={{color:"red"}}>  {new Date(match.date).toDateString()}      {match.league}    {match.homeTeam}   {match.awayTeam} </h1>
-              </>
-
-              })
-              }
-
-            realmadrid 1  3 ewr 
-
-            <br></br>
-            <br></br>
-            </Modal.Body>
-            {/* <Modal.Footer>
+                  <>
+                    <h2>Upcoming Match</h2>
+                    <Table className="trt" responsive="sm">
+                      <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>leagus</th>
+                          <th>Team 1</th>
+                          <th>team 2</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {this.state.arrOfMatch.map((match) => {
+                          return (
+                            <tr>
+                              <td>{new Date(match.date).toDateString()}</td>
+                              <td>{match.league}</td>
+                              <td>{match.homeTeam}</td>
+                              <td>{match.awayTeam}</td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </Table>
+                    {/* <h1 style={{ color: 'red' }}>
+                      {' '}
+                      {new Date(match.date).toDateString()} {match.league}{' '}
+                      {match.homeTeam} {match.awayTeam}{' '}
+                    </h1> */}
+                  </>
+                  {/* </Modal.Body> */}
+                  {/* <Modal.Footer>
               <Button    variant="outlined" color="primary" onClick={() => {this.handleModal()}}>
                 Close
               </Button>
 
             </Modal.Footer> */}
-            <button className="botClose1" onClick={() => {this.handleModal()}}>
-            Close
-            </button>
-          </Modal>
-
-
-          <Modal className="style" show={this.state.showRank} >
-            <Modal.Header  onClick={() => { this.handleRanking() }}>
-              <Modal.Title>
-              Ranking
-              </Modal.Title>
-
-            </Modal.Header>
-            <Modal.Body>
-                            <tr>
-                                <th>#</th>
-                                <th>rank</th>
-                                <th>team</th>
-                                <th>points</th>
-                            </tr>
-                                {/* { 
-                                     <tr>
-                                     <td>{match.home}</td>
-                                     <td>{match.elapsed}</td>
-                                     <td>{match.away}</td>
-                                     <td>{match.homeGoals} - {match.awayGoals}</td>
-                                 </tr>
-                                } */}
-                         
-    
-
-            </Modal.Body>
-            {/* <Modal.Footer>
+                  {/* <button
+                  className="botClose1"
+                  onClick={() => {
+                    this.handleModal();
+                  }}
+                >
+                  Close
+                </button> */}
+                  {/* </Modal> */}
+                </Col>
+              </Row>
+            )}
+            <Row>
+              <Col className="secondCol">
+                {/* <Modal className="style" show={this.state.showRank}>
+                  <Modal.Header
+                    onClick={() => {
+                      this.handleRanking();
+                    }}
+                  > */}
+                {/* <Modal.Title>Ranking</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body className="tableFav"> */}
+                <h2>Ranking</h2>
+                <div className="bodyx">
+                  <tr className="favC">
+                    <th className="ETc">#</th>
+                    <th className="ETc">rank</th>
+                    <th className="ETc">team</th>
+                    <th className="ETc">points</th>
+                  </tr>
+                  {this.state.rank.map((item, i) => {
+                    return (
+                      <>
+                        <tr className="favC">
+                          <td className="ETc1">{i + 1}</td>
+                          <td className="ETc1">{item.rank}</td>
+                          <td className="ETc1">{item.name}</td>
+                          <td className="ETc1">{item.points}</td>
+                        </tr>
+                      </>
+                    );
+                  })}
+                </div>
+                {/* </Modal.Body> */}
+                {/* <Modal.Footer>
               <Button className="botClose"   variant="outlined" color="primary" onClick={() => {this.handleRanking()}}>
                 Close
               </Button>
 
             </Modal.Footer> */}
-            <button className="botClose" onClick={() => {this.handleRanking()}}>
-            Close
-            </button>
-          </Modal>
-
-
-
+                {/* <button
+                  className="botClose"
+                  onClick={() => {
+                    this.handleRanking();
+                  }}
+                >
+                  Close
+                </button> */}
+                {/* </Modal> */}
+              </Col>
+            </Row>
+          </Container>
         </Card>
-        
-      
-     
-   
-    
-  
-     </>
-    )
+      </div>
+    );
   }
 }
 
 export default FavTeam;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React, { Component } from 'react';
 // import axios from 'axios';
@@ -321,7 +340,7 @@ export default FavTeam;
 //                             console.log(err);
 //                           });
 //                       })} */}
-//       {/* 
+//       {/*
 //                       {teams.map((favteam) => {
 //                         return ( */}
 //       {/* <div> */}

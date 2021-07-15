@@ -1,17 +1,60 @@
-th{
-    width: 180px;
-    color: rgb(226, 80, 80);
-    /* background-color: white; */
-    font-size: 25px;
-    padding: 10px;
-    margin-bottom: 20px;
+
+.body{
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+ 
 }
-td{
-    width: 150px;
-    color: rgb(238, 105, 105);
-    /* background-color: white; */
-    font-size: 25px;
-    padding: 10px;
-    margin: 20px;
+.body2{
+margin-left: 32%;
+
+
+}
+.btnLive{
+    margin-left: 17%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    font-size: 24px;
+}
+
+  .liveScoreTh {
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 1rem;
+    font-weight: 900;
+  
+  }
+  .liveScoreTd {
+    padding: 1rem 2rem;
+   
+  }
+ 
+  .status {
+    border-radius:  0.2rem;
+    background-color: red;
+    padding: 0.2rem 1rem;
     text-align: center;
 }
+   .status-pending {
+      background-color: #fff0c2;
+      color: #a68b00;
+    }
+     .status-paid {
+      background-color: #c8e6c9;
+      color:  #388e3c;
+    }
+      .status-unpaid {
+      background-color: #ffcdd2;
+      color: #c62828;
+    }
+  .amount {
+    text-align: right;
+  }
+  .tableLive:nth-child(even) {
+    background-color: #f4f6fb;
+   
+  }
+ 
