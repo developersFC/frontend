@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
+
+.aboutUsDiv {
+  display: flex;
+  flex-wrap: wrap;
+  /* background: linear-gradient(45deg, #7520ff, #e96188);  */
+  /* background: linear-gradient(rgb(39, 176, 255) 0%, rgb(0, 232, 236) 100%); */
+}
+.cards {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #f1f1f1;
+  text-align: center;
+  /* color: rgb(0, 232, 236); */
+  color: white;
+  width: 350px;
+  height: 550px;
+  padding: 25px;
+  margin-bottom: 20px;
+  margin-top: 40px;
+  /* display: inherit; */
+  box-shadow: hsl(0, 0%, 0%) 10px 20px 30px -10px;
+  background: linear-gradient(rgb(119, 118, 118) 0%, rgb(17, 17, 17) 100%);
+}
+.list-group-flush {
+  font-style: italic;
+
+  color: black;
+}
+
+.all {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.img {
+  transition: 0.7s;
+  /* border-radius: 10%; */
+  border-width: 3px;
+  border-color: #c5b0b0;
+  border-style: inherit;
+  height: 250px;
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* .img:hover {
+  filter: grayscale(0%);
+  filter: grayscale (100%);
+  filter: grayscale(var(--value, 100%));
+  transform: scale(1.5);
+} */
+
+.MDBContainer {
+  font-family: initial;
+  font-style: italic;
+  text-transform: uppercase;
+  transform: perspective(400px) rotateY(90deg);
+  transform-origin: right;
+  transition: 1s;
+}
+:hover .MDBContainer {
+  transform: perspective(400px) rotateY(0deg);
+  transition: 1s;
+  transform-origin: right;
+}
+
+.MDBIcon:hover {
+  color: rgb(0, 232, 236);
+  transform: scale(2);
+}
+.MDBIcon {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.list-group-item {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}

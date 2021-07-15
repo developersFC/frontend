@@ -25,7 +25,7 @@ const AddFavouriteTeam = () => {
   return (
     <div className="form-content-right">
       <form onSubmit={handleSubmit} className="form" noValidate>
-        <h1>Add your favourite teams</h1>
+        <h1>Pick your favourite teams</h1>
         <div className="form-inputs">
           <label className="form-label">Enter the Team's Name</label>
           <input

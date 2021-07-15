@@ -63,11 +63,11 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link
-                    to="/h2h"
+                    to="/aboutus"
                     className="nav-links"
                     onClick={closeMobileMenu}
                   >
-                    Head to Head
+                    About Us
                   </Link>
                 </li>
               </>
